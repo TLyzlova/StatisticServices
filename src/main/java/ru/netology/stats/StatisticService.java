@@ -11,11 +11,8 @@ public class StatisticService {
 
     public long averageSum(long[] purchases) {
         long average = 0;
-        long sum = 0;
-        for (long purchase : purchases) {
-            sum += purchase;
-            average = sum / 12;
-        }
+        long sum = calculateSum(purchases);
+        average = sum / 12;
         return average;
     }
 
@@ -52,8 +49,7 @@ public class StatisticService {
         long underAverage = 0;
         for (long purchase : purchases) {
             if (purchase < average) {
-                purchase = 1;
-                underAverage += purchase;
+                underAverage++;
             }
         }
         return underAverage;
@@ -64,8 +60,7 @@ public class StatisticService {
         long overAverage = 0;
         for (long purchase : purchases) {
             if (purchase > average) {
-                purchase = 1;
-                overAverage += purchase;
+                overAverage++;
             }
         }
         return overAverage;
